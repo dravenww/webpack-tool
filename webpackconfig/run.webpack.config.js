@@ -40,14 +40,14 @@ if(pages.length == 1) {
             htmls[page] = defaultEntry.htmls[page];
         }
     }
-    openPage = 'html/audient/index.html';
-    entry.audient = common.audientPath + common.mainFile;
-    plugins.push(new HtmlWebpackPlugin({
-        template: common.audientPath + common.htmlFile,
-        filename: `html/audient/index.html`,
-        inject: true,
-        chunks: ['audient', 'common']
-    }));
+    // openPage = 'html/audient/index.html';
+    // entry.audient = common.audientPath + common.mainFile;
+    // plugins.push(new HtmlWebpackPlugin({
+    //     template: common.audientPath + common.htmlFile,
+    //     filename: `html/audient/index.html`,
+    //     inject: true,
+    //     chunks: ['audient', 'common']
+    // }));
 }
 let url = 'http://'+ host +':' + port + '/' + openPage;
 if (bwtConfig.needOpenBrowser) {
@@ -70,7 +70,7 @@ if (bwtConfig.needUpload && bwtConfig.uploadOption.receiver && bwtConfig.uploadO
 for (var page in htmls) {
     if (page && htmls.hasOwnProperty(page) && htmls[page]) {
         let tplPath = common.viewPath + '/' + page + '/' + common.htmlFile;
-        var chunks = ['webpack-dev-server', page, 'common'];
+        var chunks = ['webpack-dev-server', page, 'common', 'vendor'];
         plugins.push(new HtmlWebpackPlugin({
             template: tplPath,
             filename: `html/${page}/${common.htmlFile}`,
@@ -81,8 +81,25 @@ for (var page in htmls) {
 }
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
+    // mode: 'development',
     entry: entry,
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    name: "vendor",
+                    chunks: "initial",
+                    minChunks: 2
+                },
+                commons: {
+                    name: "common",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
+        }
+    },
     output: output.output,
     module: rule,
     resolve: resolve,

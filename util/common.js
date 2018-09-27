@@ -7,8 +7,8 @@
 const fs = require('fs');
 const path = require('path');
 const child_process = require('child_process');
-const baseDir = process.cwd();
-// const baseDir = path.join(process.cwd(), 'bwttest');
+// const baseDir = process.cwd();
+const baseDir = path.join(process.cwd(), 'bwttest');
 const bwtConfigFile = path.join(baseDir, 'bwt.config.js');
 
 let arguments = process.argv.splice(2);

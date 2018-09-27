@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const fs = require('fs');
 const VueLoader = require('vue-loader');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const common = require('../util/common');
 const bwtConfig = require(common.bwtConfigFile);
 const cssOutputPath = bwtConfig && bwtConfig.cssOutputPath ? bwtConfig.cssOutputPath : common.defaultCssPath;
@@ -14,12 +15,13 @@ let cssPlugin = new MiniCssExtractPlugin({
 });
 plugins.push(cssPlugin);
 
-
 let definePlugin = new webpack.DefinePlugin({
     __DEV__: common.isDev,
     __PRO__: common.isPro
 });
 plugins.push(definePlugin);
+
+plugins.push(new UglifyJsPlugin());
 
 if (bwtConfig.view == 'vue') {
     let vueLoaderPlugin = new VueLoader.VueLoaderPlugin();

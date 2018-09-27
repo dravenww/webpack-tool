@@ -8,7 +8,7 @@ module.exports.output = {
     path: common.outputPath,
     // file name
     filename: `${jsPath}/[name].[hash:8].js`,
-    chunkFilename: `${jsPath}/chunk/[name].[hash:8].js`,
+    chunkFilename: `${jsPath}/chunk/[name].[chunkhash].js`,
     // webpack publicPath :https://webpack.js.org/configuration/output/#output-publicpath
     publicPath: publicPath
 }

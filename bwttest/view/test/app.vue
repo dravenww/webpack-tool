@@ -2,7 +2,7 @@
     <div class="container">
         <vheader></vheader>
         <div>
-            {{name}}
+            {{name}}www{{value}}
         </div>
     </div>
 </template>
@@ -10,14 +10,17 @@
 <script>
     import vHeader from 'widget/test/vheader.vue'
     import util from '@/util/index';
+    import uu from './util';
     export default {
         data: function () {
             return {
-                name: util.getTitle()
+                name: util.getTitle(),
+                value: uu.speak()
             }
         },
         created: function () {
-            console.log(2222222);
+
+            console.log(22123422222);
         },
         components: {
             vheader: vHeader

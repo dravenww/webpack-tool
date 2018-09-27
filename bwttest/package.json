@@ -1,6 +1,7 @@
 {
   "name": "bwttest",
   "version": "0.0.1",
+  "sideEffects": false,
   "description": "bwt project for %projectname%",
   "scripts": {},
   "dependencies": {

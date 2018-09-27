@@ -32,6 +32,9 @@ pages.forEach(function (page) {
     }
 });
 
+// entry.vendor = ['react', 'react-dom', 'vue', 'vue-router'];
+entry.vendor = ['vue', 'vue-router'];
+
 module.exports = {
     entry: entry,//Object.values(entry),
     htmls: htmls

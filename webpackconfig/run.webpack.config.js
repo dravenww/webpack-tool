@@ -3,9 +3,9 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackdevOutput = require('webpack-dev-server-output');
 const WebpackUploadPlugin = require('webpack-upload');
-const bwtConfig = require(common.bwtConfigFile);
-const port = bwtConfig && bwtConfig.port ? bwtConfig.port : common.defaultPort;
-const host = bwtConfig && bwtConfig.host ? bwtConfig.host : common.defaultHost;
+const pwtConfig = require(common.pwtConfigFile);
+const port = pwtConfig && pwtConfig.port ? pwtConfig.port : common.defaultPort;
+const host = pwtConfig && pwtConfig.host ? pwtConfig.host : common.defaultHost;
 let defaultEntry = require('./entry');
 let rule = require('./rule');
 let output = require('./output');
@@ -50,7 +50,7 @@ if(pages.length == 1) {
     }));
 }
 let url = 'http://'+ host +':' + port + '/' + openPage;
-if (bwtConfig.needOpenBrowser) {
+if (pwtConfig.needOpenBrowser) {
     plugins.push(new OpenBrowserPlugin({url: url}));
 }
 
@@ -60,10 +60,10 @@ plugins.push(new WebpackdevOutput({
 }));
 
 // todo upload
-if (bwtConfig.needUpload && bwtConfig.uploadOption.receiver && bwtConfig.uploadOption.to) {
+if (pwtConfig.needUpload && pwtConfig.uploadOption.receiver && pwtConfig.uploadOption.to) {
     plugins.push(new WebpackUploadPlugin({
-        receiver: bwtConfig.uploadOption.receiver,
-        to: bwtConfig.uploadOption.to
+        receiver: pwtConfig.uploadOption.receiver,
+        to: pwtConfig.uploadOption.to
     }))
 }
 

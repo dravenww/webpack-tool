@@ -10,7 +10,7 @@ const config = require('./package.json');
 let templatePath = __dirname + '/template/';
 let projectName;
 let viewName;
-let cssName;
+let cssName = "less";
 /**
  * @return promise
  */
@@ -28,14 +28,14 @@ function buildPackageJson() {
 /**
  * @return promise
  */
-function buildBwtConfig() {
-    let readPath = templatePath + 'bwt.config.js';
+function buildPwtConfig() {
+    let readPath = templatePath + 'pwt.config.js';
     let content = fs.readFileSync(readPath, 'utf8');
     let str = content.replace(/%css%/, cssName)
         .replace(/%view%/, viewName)
         .replace(/%projectName%/, projectName);
     return new Promise(function (resolve, reject) {
-        let writePath = path.join(common.baseDir, projectName + '/bwt.config.js');
+        let writePath = path.join(common.baseDir, projectName + '/pwt.config.js');
         fs.writeFile(writePath, str, 'utf8', function () {
             resolve();
         });
@@ -49,8 +49,8 @@ function copyAndGenarate(fromSrc, toSrc, cb) {
         });
     });
     let packageJsonPromise = buildPackageJson(toSrc);
-    let bwtConfigPromise = buildBwtConfig(toSrc);
-    Promise.all([cpPromise, packageJsonPromise, bwtConfigPromise]).then(function (res) {
+    let pwtConfigPromise = buildPwtConfig(toSrc);
+    Promise.all([cpPromise, packageJsonPromise, pwtConfigPromise]).then(function (res) {
         cb(common.initStatusCode.INIT_STATUS_SUCCESS);
     }, function (res) {
         if (res[0]) {
@@ -58,7 +58,7 @@ function copyAndGenarate(fromSrc, toSrc, cb) {
         } else if (res[1]) {
             cb(common.initStatusCode.INIT_STATUS_PACKAGE_JSON);
         } else if (res[2]) {
-            cb(common.initStatusCode.INIT_STATUS_BWT_CONFIG);
+            cb(common.initStatusCode.INIT_STATUS_PWT_CONFIG);
         } else {
             cb(common.initStatusCode.INIT_STATUS_NO_KNOW);
         }
@@ -84,9 +84,9 @@ function excel(cb) {
 module.exports = function () {
     console.log('hello init')
     co(function *() {
-        projectName = yield prompt('INPUT your project name(default: bwttest):');
+        projectName = yield prompt('INPUT your project name(default: pwttest):');
         if (projectName == '') {
-            projectName = 'bwttest';
+            projectName = 'pwttest';
         }
         viewName = yield prompt('INPUT your render technology(vue or react,default: vue):');
         if (viewName == '') {
@@ -96,18 +96,6 @@ module.exports = function () {
             if (viewName != 'react' && viewName != 'vue') {
                 console.log('your render technology is not support! please retry');
                 viewName = yield prompt('INPUT your render technology(vue or react):');
-            } else {
-                break;
-            }
-        }
-        cssName = yield prompt('INPUT your css technology(less or scss,default: less):');
-        if (cssName == '') {
-            cssName = 'less';
-        }
-        while(true) {
-            if (cssName != 'less' && cssName != 'scss') {
-                console.log('your css technology is not support! please retry');
-                cssName = yield prompt('INPUT your css technology(less or scss):');
             } else {
                 break;
             }

@@ -1,9 +1,9 @@
 const common = require('../util/common');
 const fs = require('fs');
 const path = require('path');
-const bwtConfig = require(common.bwtConfigFile);
-let configEntry = bwtConfig && bwtConfig.entry ? bwtConfig.entry : {};
-let configHtml = bwtConfig && bwtConfig.htmls ? bwtConfig.htmls : {};
+const pwtConfig = require(common.pwtConfigFile);
+let configEntry = pwtConfig && pwtConfig.entry ? pwtConfig.entry : {};
+let configHtml = pwtConfig && pwtConfig.htmls ? pwtConfig.htmls : {};
 let entry = {};
 
 const pages = fs.readdirSync(common.viewPath).filter(function (page) {

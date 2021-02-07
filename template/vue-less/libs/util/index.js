@@ -2,7 +2,7 @@
  * util.js
  */
 function getTitle() {
-    return 'hello bwt';
+    return 'hello pwt';
 }
 function ready(cb) {
     document.addEventListener('DOMContentLoaded', function () {

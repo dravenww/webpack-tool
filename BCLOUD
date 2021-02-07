@@ -1,1 +1,0 @@
-BUILD_SUBMITTER -x -m baidu/nuomi-t10/bwt -c "cd baidu/nuomi-t10/bwt && mkdir output &&cp BCLOUD ./output/" -u ./

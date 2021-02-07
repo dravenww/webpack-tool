@@ -3,12 +3,10 @@
  * @author   author
  * @dateTime date
  */
-import React, {Component} from 'react';
+import React from 'react';
 import './index.less';
-export default class Header extends Component {
-    render() {
-        return (
-            <div className="v-header">header</div>
-        );
-    }
+export default function Header(props) {
+    return (
+        <div className="v-header">header</div>
+    );
 }

@@ -1,7 +1,7 @@
 const common = require('../util/common');
-const bwtConfig = require(common.bwtConfigFile);
-const jsPath = bwtConfig && bwtConfig.jsOutputPath ? bwtConfig.jsOutputPath : common.defaultJsPath;
-const publicPath = bwtConfig && bwtConfig.webpackPublicPath ? bwtConfig.webpackPublicPath : common.defaultPublicPah;
+const pwtConfig = require(common.pwtConfigFile);
+const jsPath = pwtConfig && pwtConfig.jsOutputPath ? pwtConfig.jsOutputPath : common.defaultJsPath;
+const publicPath = pwtConfig && pwtConfig.webpackPublicPath ? pwtConfig.webpackPublicPath : common.defaultPublicPah;
 
 module.exports.output = {
     // output path

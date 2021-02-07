@@ -2,9 +2,9 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const common = require('./util/common');
-const bwtConfig = require(common.bwtConfigFile);
-const port = bwtConfig && bwtConfig.port ? bwtConfig.port : common.defaultPort;
-const host = bwtConfig && bwtConfig.host ? bwtConfig.host : common.defaultHost;
+const pwtConfig = require(common.pwtConfigFile);
+const port = pwtConfig && pwtConfig.port ? pwtConfig.port : common.defaultPort;
+const host = pwtConfig && pwtConfig.host ? pwtConfig.host : common.defaultHost;
 let config = require('./webpackconfig/run.webpack.config');
 
 let devServer = {
@@ -15,7 +15,7 @@ let devServer = {
     host: "0.0.0.0",
     publicPath: "/",
     disableHostCheck: true,
-    proxy: bwtConfig.proxy
+    proxy: pwtConfig.proxy
 }
 module.exports = function () {
     console.log('run webpack for your project');

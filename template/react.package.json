@@ -1,11 +1,11 @@
 {
   "name": "%projectname%",
   "version": "0.0.1",
-  "description": "bwt project for %projectname%",
+  "description": "pwt project for %projectname%",
   "scripts": {},
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "n-zepto": "^1.2.0",
     "babel-polyfill": "^6.26.0",
     "fastclick": "^1.0.6"

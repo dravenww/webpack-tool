@@ -1,5 +1,5 @@
 const common = require('../util/common');
-const bwtConfig = require(common.bwtConfigFile);
+const pwtConfig = require(common.pwtConfigFile);
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 let rules = [
     {
@@ -14,7 +14,7 @@ let rules = [
     }
 ];
 
-if (bwtConfig.css == 'less') {
+if (pwtConfig.css == 'less') {
     rules.push({
         test: /\.less|css$/i,
         use: [
@@ -31,7 +31,7 @@ if (bwtConfig.css == 'less') {
             "less-loader"
         ]
     })
-} else if (bwtConfig.css == 'scss') {
+} else if (pwtConfig.css == 'scss') {
     rules.push({
         test: /\.scss|css$/i,
         use: [
@@ -50,7 +50,7 @@ if (bwtConfig.css == 'less') {
     })
 }
 
-if (bwtConfig.view == 'vue') {
+if (pwtConfig.view == 'vue') {
     rules.push({
         test: /\.vue$/,
         loader: 'vue-loader'
@@ -71,7 +71,7 @@ if (bwtConfig.view == 'vue') {
             }
         ]
     });
-} else if (bwtConfig.view == 'react') {
+} else if (pwtConfig.view == 'react') {
     rules.push({
         test: /\.js/,
         loader: 'babel-loader',

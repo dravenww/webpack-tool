@@ -3,29 +3,20 @@
  * @author   author
  * @dateTime date
  */
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from 'widget/header';
 import './index.less';
 
-
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = this.props.data;
-    }
-    componentDidMount() {
-    }
-    render() {
-        return (
-            <div className="box">
-                <Header/>
-                hello {this.state.title}
-            </div>
-        )
-    }
-};
+function App () {
+    return (
+        <div className="box">
+            <Header/>
+            hello {this.state.title}
+        </div>
+    )
+}
 let data = {
-    title: ' BWT'
+    title: ' pwt'
 }
 ReactDOM.render(<App data={data}/>, document.getElementById('wrapContainer'));

@@ -1,5 +1,5 @@
 {
-  "name": "%projectname%",
+  "name": "pwttest",
   "version": "0.0.1",
   "description": "pwt project for %projectname%",
   "scripts": {},

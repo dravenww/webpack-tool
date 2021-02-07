@@ -8,8 +8,8 @@ const fs = require('fs');
 const path = require('path');
 const child_process = require('child_process');
 const baseDir = process.cwd();
-// const baseDir = path.join(process.cwd(), 'bwttest');
-const bwtConfigFile = path.join(baseDir, 'bwt.config.js');
+// const baseDir = path.join(process.cwd(), 'pwttest');
+const pwtConfigFile = path.join(baseDir, 'pwt.config.js');
 
 let arguments = process.argv.splice(2);
 let entry = process.env.npm_config_entry;
@@ -17,7 +17,7 @@ const initStatusCode = {
     INIT_STATUS_SUCCESS : 0,
     INIT_STATUS_FILE_EXIST : 1,
     INIT_STATUS_PACKAGE_JSON : 2,
-    INIT_STATUS_BWT_CONFIG : 3,
+    INIT_STATUS_PWT_CONFIG : 3,
     INIT_STATUS_COPY_ERROR : 4,
     INIT_STATUS_NO_KNOW : 5,
 }
@@ -25,7 +25,7 @@ const initStatusTEXT = [
     'success',
     'folder is all ready exist',
     'init package.json error',
-    'init bwt.config.js error ',
+    'init pwt.config.js error ',
     'init copy file error',
     'not know error',
 ]
@@ -39,9 +39,9 @@ module.exports = {
     entry: entry,
     initStatusCode: initStatusCode,
     initStatusTEXT: initStatusTEXT,
-    bwtConfigFile: bwtConfigFile,
+    pwtConfigFile: pwtConfigFile,
     baseDir: baseDir,
-    bwtNodeModule: path.join(__dirname, '../node_modules'),
+    pwtNodeModule: path.join(__dirname, '../node_modules'),
     nodeModulesPath: path.join(baseDir, 'node_modules'),
     libPath: path.join(baseDir, 'libs'),
     vueWidgetPath: path.join(baseDir, 'widget'),

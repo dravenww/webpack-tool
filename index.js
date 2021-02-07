@@ -14,8 +14,8 @@ if (common.direct == 'run') {
         .version('v' + config.version)
         .usage('<command>')
         .option('-v, --version', 'output the version number')
-        .command('init', 'generate a new bwt project')
-        .command('run', 'run the bwt project with development')
-        .command('release', 'release the bwt project with production')
+        .command('init', 'generate a new pwt project')
+        .command('run', 'run the pwt project with development')
+        .command('release', 'release the pwt project with production')
         .parse(process.argv);
 }

@@ -3,8 +3,8 @@ const fs = require('fs');
 const VueLoader = require('vue-loader');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const common = require('../util/common');
-const bwtConfig = require(common.bwtConfigFile);
-const cssOutputPath = bwtConfig && bwtConfig.cssOutputPath ? bwtConfig.cssOutputPath : common.defaultCssPath;
+const pwtConfig = require(common.pwtConfigFile);
+const cssOutputPath = pwtConfig && pwtConfig.cssOutputPath ? pwtConfig.cssOutputPath : common.defaultCssPath;
 let plugins = [];
 
 
@@ -21,7 +21,7 @@ let definePlugin = new webpack.DefinePlugin({
 });
 plugins.push(definePlugin);
 
-if (bwtConfig.view == 'vue') {
+if (pwtConfig.view == 'vue') {
     let vueLoaderPlugin = new VueLoader.VueLoaderPlugin();
     plugins.push(vueLoaderPlugin);
 }
